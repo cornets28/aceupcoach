@@ -1,7 +1,8 @@
 module Api
   module V1
     class CoachInstructorsController < ApplicationController
-
+      before_action :user_authorized?
+      
       # Create a new coach
       def create
         coach = CoachInstructor.new(coachesController_params)
@@ -15,11 +16,7 @@ module Api
 
       # List of all the coaches
       def index
-        if user_authorized?
-          render json: CoachInstructor.all
-        else
-          render json: { error: 'Invalid API token! Coach cannot be found.' }, status: :unprocessable_entity
-        end
+        render json: CoachInstructor.all
       end
 
       private
