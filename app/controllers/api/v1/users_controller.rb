@@ -6,7 +6,7 @@ module Api
           if user_authorized?
             render json: User.all
           else
-            render json: { error: 'Invalid API token! User cannot found.' }, status: :unprocessable_entity
+            render json: { error: 'Invalid API token! User cannot be found.' }, status: :unprocessable_entity
           end
         end
   
