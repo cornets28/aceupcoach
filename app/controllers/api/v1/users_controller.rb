@@ -2,16 +2,15 @@ module Api
     module V1
       # All actions are in used for user authentication.
       class UsersController < ApplicationController
+        before_action :user_authorized?, only:[:index]
+
         def index
-          if user_authorized?
             render json: User.all
-          else
-            render json: { error: 'Invalid API token! User cannot be found.' }, status: :unprocessable_entity
-          end
         end
   
         def create
-          @user = User.create(user_params)
+          user_params_with_default_role = user_params.merge(role: params[:role] || 'client')
+          @user = User.create(user_params_with_default_role)
   
           if @user.valid?
             token = encode_token({ user_id: @user.id })
