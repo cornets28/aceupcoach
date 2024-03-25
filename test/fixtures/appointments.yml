@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  coach_instructor: one
+  user: one
+  appointment_start_date: 2024-03-21 11:03:50
+  duration: 1
+  location: MyString
+  coach_name: MyString
+
+two:
+  coach_instructor: two
+  user: two
+  appointment_start_date: 2024-03-21 11:03:50
+  duration: 1
+  location: MyString
+  coach_name: MyString
